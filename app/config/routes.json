@@ -1,0 +1,15 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/nova-conta",
+      "page": "nova-conta",
+      "layout": "main"
+    }
+  ]
+}

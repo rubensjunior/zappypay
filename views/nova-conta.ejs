@@ -1,0 +1,295 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="novaconta" appConnect="local" components="{dmxValidator:{}}" -->
+
+<!-- Variáveis de controle do formulário -->
+<dmx-value id="current_step" dmx-bind:value="1"></dmx-value>
+<dmx-value id="total_steps" dmx-bind:value="4"></dmx-value>
+<dmx-value id="selected_plan" dmx-bind:value="'profissional'"></dmx-value>
+<dmx-browser id="navegacao"></dmx-browser>
+
+<div class="nova-conta-clean">
+    <div class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Header simples -->
+                <div class="text-center mb-4">
+                    <h1 class="h2 text-dark fw-bold mb-2">Criar Nova Conta</h1>
+                    <p class="text-muted">Preencha os dados abaixo para começar a usar o ZappyPay</p>
+                    <button id="btn_voltar_home" class="btn btn-outline-secondary btn-sm" dmx-on:click="navegacao.goto('/', true)">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar ao Login
+                    </button>
+                </div>
+
+                <!-- Progress indicator fora do card -->
+                <div class="progress-steps-external mb-4">
+                    <div class="step-external" dmx-class:active="current_step.value >= 1" dmx-class:completed="current_step.value > 1">
+                        <div class="step-circle">1</div>
+                        <span class="step-label">Empresa</span>
+                    </div>
+                    <div class="step-external" dmx-class:active="current_step.value >= 2" dmx-class:completed="current_step.value > 2">
+                        <div class="step-circle">2</div>
+                        <span class="step-label">Endereço</span>
+                    </div>
+                    <div class="step-external" dmx-class:active="current_step.value >= 3" dmx-class:completed="current_step.value > 3">
+                        <div class="step-circle">3</div>
+                        <span class="step-label">Usuário</span>
+                    </div>
+                    <div class="step-external" dmx-class:active="current_step.value >= 4">
+                        <div class="step-circle">4</div>
+                        <span class="step-label">Plano</span>
+                    </div>
+                </div>
+
+                <!-- Card principal -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <form is="dmx-serverconnect-form" id="registro_form" method="post" action="/api/auth/register">
+
+                            <!-- Campo hidden para o plano selecionado -->
+                            <input type="hidden" name="plano_selecionado" dmx-bind:value="selected_plan.value">
+
+                            <!-- Etapa 1: Dados da Empresa -->
+                            <div class="form-step" dmx-class:active="current_step.value == 1">
+                                <div class="step-title-clean mb-4">
+                                    <h4 class="fw-bold text-dark mb-1">Dados da Empresa</h4>
+                                    <p class="text-muted small mb-0">Informe os dados básicos da sua empresa</p>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="razao_social" class="form-label">Razão Social *</label>
+                                        <input type="text" class="form-control" id="razao_social" name="razao_social" required data-msg-required="Por favor, informe a razão social">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="nome_fantasia" class="form-label">Nome Fantasia</label>
+                                        <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="cnpj" class="form-label">CNPJ *</label>
+                                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required data-msg-required="Por favor, informe o CNPJ" data-rule-pattern="^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$" data-msg-pattern="CNPJ deve ter o formato XX.XXX.XXX/XXXX-XX">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="whatsapp" class="form-label">WhatsApp *</label>
+                                        <input type="text" class="form-control" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required data-msg-required="Por favor, informe o WhatsApp">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 2: Endereço -->
+                            <div class="form-step" dmx-class:active="current_step.value == 2">
+                                <div class="step-title-clean mb-4">
+                                    <h4 class="fw-bold text-dark mb-1">Endereço da Empresa</h4>
+                                    <p class="text-muted small mb-0">Informe o endereço completo da empresa</p>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="endereco" class="form-label">Endereço completo *</label>
+                                        <input type="text" class="form-control" id="endereco" name="endereco" required data-msg-required="Por favor, informe o endereço">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cep" class="form-label">CEP *</label>
+                                        <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" required data-msg-required="Por favor, informe o CEP" data-rule-pattern="^\d{5}-\d{3}$" data-msg-pattern="CEP deve ter o formato XXXXX-XXX">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="bairro" class="form-label">Bairro *</label>
+                                        <input type="text" class="form-control" id="bairro" name="bairro" required data-msg-required="Por favor, informe o bairro">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="cidade" class="form-label">Cidade *</label>
+                                        <input type="text" class="form-control" id="cidade" name="cidade" required data-msg-required="Por favor, informe a cidade">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="estado" class="form-label">Estado *</label>
+                                        <select class="form-select" id="estado" name="estado" required data-msg-required="Por favor, selecione o estado">
+                                            <option value="">UF</option>
+                                            <option value="AC">AC</option>
+                                            <option value="AL">AL</option>
+                                            <option value="AP">AP</option>
+                                            <option value="AM">AM</option>
+                                            <option value="BA">BA</option>
+                                            <option value="CE">CE</option>
+                                            <option value="DF">DF</option>
+                                            <option value="ES">ES</option>
+                                            <option value="GO">GO</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MT">MT</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MG">MG</option>
+                                            <option value="PA">PA</option>
+                                            <option value="PB">PB</option>
+                                            <option value="PR">PR</option>
+                                            <option value="PE">PE</option>
+                                            <option value="PI">PI</option>
+                                            <option value="RJ">RJ</option>
+                                            <option value="RN">RN</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RO">RO</option>
+                                            <option value="RR">RR</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SP">SP</option>
+                                            <option value="SE">SE</option>
+                                            <option value="TO">TO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 3: Dados do Usuário -->
+                            <div class="form-step" dmx-class:active="current_step.value == 3">
+                                <div class="step-title-clean mb-4">
+                                    <h4 class="fw-bold text-dark mb-1">Dados do Usuário</h4>
+                                    <p class="text-muted small mb-0">Crie suas credenciais de acesso</p>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="nome_completo" class="form-label">Nome completo *</label>
+                                        <input type="text" class="form-control" id="nome_completo" name="nome_completo" required data-msg-required="Por favor, informe seu nome completo">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required data-msg-required="Por favor, informe seu e-mail" data-rule-email="true" data-msg-email="Por favor, informe um e-mail válido">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="senha" class="form-label">Senha *</label>
+                                        <input type="password" class="form-control" id="senha" name="senha" required data-msg-required="Por favor, crie uma senha" minlength="8" data-msg-minlength="A senha deve ter pelo menos 8 caracteres">
+                                        <div class="form-text">Mínimo de 8 caracteres</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="confirmar_senha" class="form-label">Confirmar senha *</label>
+                                        <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" required data-msg-required="Por favor, confirme sua senha" data-rule-equalto="#senha" data-msg-equalto="As senhas não coincidem">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 4: Escolha do Plano -->
+                            <div class="form-step" dmx-class:active="current_step.value == 4">
+                                <div class="step-title-clean mb-4">
+                                    <h4 class="fw-bold text-dark mb-1">Escolha seu Plano</h4>
+                                    <p class="text-muted small mb-0">Selecione o plano que melhor atende às suas necessidades</p>
+                                </div>
+
+                                <div class="row g-3">
+                                    <!-- Plano Básico -->
+                                    <div class="col-lg-4">
+                                        <div class="plan-card-clean" dmx-class:selected="selected_plan.value == 'basico'" dmx-on:click="selected_plan.setValue('basico')">
+                                            <input type="radio" name="plano" value="basico" class="plan-radio" dmx-bind:checked="selected_plan.value == 'basico'">
+
+                                            <div class="plan-header-clean">
+                                                <h5 class="plan-name-clean">Básico</h5>
+                                                <div class="plan-price-clean">
+                                                    <span class="price-amount">R$ 29</span>
+                                                    <span class="price-period">/mês</span>
+                                                </div>
+                                            </div>
+
+                                            <ul class="plan-features-clean">
+                                                <li><i class="fas fa-check text-success me-2"></i>Até 100 transações/mês</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Dashboard básico</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Suporte por email</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>PIX e cartão</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Relatórios mensais</li>
+                                            </ul>
+
+                                            <div class="plan-check-clean">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Plano Profissional -->
+                                    <div class="col-lg-4">
+                                        <div class="plan-card-clean featured-plan" dmx-class:selected="selected_plan.value == 'profissional'" dmx-on:click="selected_plan.setValue('profissional')">
+                                            <div class="plan-badge-clean">Recomendado</div>
+                                            <input type="radio" name="plano" value="profissional" class="plan-radio" dmx-bind:checked="selected_plan.value == 'profissional'">
+
+                                            <div class="plan-header-clean">
+                                                <h5 class="plan-name-clean">Profissional</h5>
+                                                <div class="plan-price-clean">
+                                                    <span class="price-amount">R$ 79</span>
+                                                    <span class="price-period">/mês</span>
+                                                </div>
+                                            </div>
+
+                                            <ul class="plan-features-clean">
+                                                <li><i class="fas fa-check text-success me-2"></i>Até 1.000 transações/mês</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Dashboard avançado</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Suporte prioritário</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Todos os meios de pagamento</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Relatórios personalizados</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>API completa</li>
+                                            </ul>
+
+                                            <div class="plan-check-clean">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Plano Enterprise -->
+                                    <div class="col-lg-4">
+                                        <div class="plan-card-clean" dmx-class:selected="selected_plan.value == 'enterprise'" dmx-on:click="selected_plan.setValue('enterprise')">
+                                            <input type="radio" name="plano" value="enterprise" class="plan-radio" dmx-bind:checked="selected_plan.value == 'enterprise'">
+
+                                            <div class="plan-header-clean">
+                                                <h5 class="plan-name-clean">Enterprise</h5>
+                                                <div class="plan-price-clean">
+                                                    <span class="price-amount">R$ 199</span>
+                                                    <span class="price-period">/mês</span>
+                                                </div>
+                                            </div>
+
+                                            <ul class="plan-features-clean">
+                                                <li><i class="fas fa-check text-success me-2"></i>Transações ilimitadas</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Dashboard executivo</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Suporte 24/7</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Integração customizada</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Gerente de conta dedicado</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>SLA garantido</li>
+                                            </ul>
+
+                                            <div class="plan-check-clean">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Navegação do formulário fora do card -->
+                <div class="
+                mt-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <button type="button" class="btn btn-outline-secondary" dmx-show="current_step.value > 1" dmx-on:click="current_step.setValue(current_step.value - 1)">
+                                <i class="fas fa-arrow-left me-2"></i>Anterior
+                            </button>
+                        </div>
+
+
+                        <div>
+                            <!-- Botão Próximo -->
+                            <button type="button" class="btn btn-success" dmx-show="current_step.value < total_steps.value" dmx-on:click="current_step.setValue(current_step.value + 1)">
+                                Próximo<i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+
+                            <!-- Botão Finalizar -->
+                            <button type="button" class="btn btn-success" dmx-show="current_step.value == total_steps.value" dmx-on:click="registro_form.submit()" dmx-bind:disabled="registro_form.state.executing">
+                                <span dmx-hide="registro_form.state.executing">Criar conta</span>
+                                <span dmx-show="registro_form.state.executing">
+                                    <span class="spinner-border spinner-border-sm me-2"></span>Criando...
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<meta name="ac:route" content="/nova-conta">
