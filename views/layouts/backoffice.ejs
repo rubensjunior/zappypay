@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+  <base href="/">
+  <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+  <meta charset="UTF-8">
+  <title>Zappypay - Backoffice</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/bootstrap/5/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+</head>
+
+<body is="dmx-app" id="backoffice" class="bg-backoffice">
+  <div class="wappler-block container-fluid">
+    <div class="row bg-white mb-3">
+      <div class="col py-2 px-4">
+        <div class="d-flex flex-row align-items-center justify-content-between">
+          <h3 class="m-0 text-success">Zappypay</h3>
+
+          <!-- Menu de Perfil de Usuário -->
+          <div class="d-flex align-items-center">
+            <!-- Ícone de Notificação -->
+            <button class="notification-icon-btn me-3" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Atualizações disponíveis">
+              <i class="far fa-bell"></i>
+              <span class="notification-dot"></span>
+            </button>
+
+            <div class="dropdown user-profile-dropdown" id="user_profile">
+              <button class="user-profile-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="userProfileToggle">
+                <img src="https://via.placeholder.com/40x40/67AF43/FFFFFF?text=JD" alt="Foto de perfil" class="user-avatar">
+                <div class="user-info">
+                  <div class="user-name">João da Silva</div>
+                  <div class="user-role">Administrador</div>
+                </div>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </button>
+
+              <div class="dropdown-menu user-dropdown-menu" aria-labelledby="userProfileToggle">
+                <div class="dropdown-user-header">
+                  <div class="user-name">João da Silva</div>
+                  <div class="user-email">joao.silva@zappypay.com</div>
+                </div>
+
+                <a class="user-dropdown-item" href="#" internal>
+                  <i class="fas fa-user"></i>
+                  Meu Perfil
+                </a>
+                <a class="user-dropdown-item" href="#" internal>
+                  <i class="fas fa-wallet"></i>
+                  Financeiro
+                </a>
+                <a class="user-dropdown-item logout" href="#" internal>
+                  <i class="fas fa-sign-out-alt"></i>
+                  Sair
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-1 col-xl-1">
+        <div class="sidebar-container">
+          <nav class="sidebar-nav">
+            <button id="btn_users" class="btn-round active" data-bs-toggle="tooltip" data-bs-placement="right" title="Usuários">
+              <i class="fas fa-users"></i>
+            </button>
+            <button id="btn_transactions" class="btn-round" data-bs-toggle="tooltip" data-bs-placement="right" title="Transações">
+              <i class="fas fa-credit-card"></i>
+            </button>
+            <button id="btn_reports" class="btn-round" data-bs-toggle="tooltip" data-bs-placement="right" title="Relatórios">
+              <i class="fas fa-chart-bar"></i>
+            </button>
+            <button id="btn_settings" class="btn-round" data-bs-toggle="tooltip" data-bs-placement="right" title="Configurações">
+              <i class="fas fa-cog"></i>
+            </button>
+          </nav>
+        </div>
+      </div>
+      <div class="col-12 col-md-11 col-xl-11" is="dmx-view" id="content"><%- await include(content, locals); %></div>
+    </div>
+  </div>
+
+  <script src="/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Inicializar tooltips do Bootstrap
+    document.addEventListener('DOMContentLoaded', function() {
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    });
+  </script>
+</body>
+
+</html>

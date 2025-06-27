@@ -10,6 +10,11 @@
       "path": "/nova-conta",
       "page": "nova-conta",
       "layout": "main"
+    },
+    {
+      "path": "/security/backoffice/",
+      "page": "internal/inicio",
+      "layout": "backoffice"
     }
   ]
 }
