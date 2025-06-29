@@ -21,6 +21,157 @@ hr{
     font-size: 16px;
 }
 
+/* ==============================================
+   RESPONSIVIDADE PARA TELA DE LOGIN
+   ============================================== */
+
+/* Ajustes responsivos para a imagem mockup */
+.responsive-mockup {
+    max-width: 520px;
+    width: 100%;
+    height: auto;
+}
+
+/* Ajustes para dispositivos mobile (até 767px) */
+@media (max-width: 767.98px) {
+    /* Reduz a altura da seção verde em mobile */
+    .col-12.col-lg-7.bg-success {
+        min-height: 250px;
+        max-height: 40vh;
+    }
+    
+    /* Ajusta o título para mobile */
+    .logo-titulo {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    /* Ajusta o mockup para mobile */
+    .responsive-mockup {
+        max-width: 280px;
+        max-height: 200px;
+        object-fit: contain;
+    }
+    
+    /* Ajusta o padding do formulário em mobile */
+    .col-12.col-lg-5 .row {
+        padding: 2rem 1rem !important;
+    }
+    
+    /* Centraliza o conteúdo do container-card */
+    .container-card {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    
+    /* Ajusta os links para mobile */
+    .link-2 {
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+/* Ajustes para tablets (768px até 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Ajusta o título para tablet */
+    .logo-titulo {
+        font-size: 3rem;
+        text-align: center;
+    }
+    
+    /* Ajusta o mockup para tablet */
+    .responsive-mockup {
+        max-width: 400px;
+        max-height: 300px;
+    }
+    
+    /* Altura da seção verde em tablet */
+    .col-12.col-lg-7.bg-success {
+        min-height: 350px;
+    }
+}
+
+/* Ajustes para dispositivos muito pequenos (até 575px) */
+@media (max-width: 575.98px) {
+    /* Container com altura mínima reduzida */
+    .vh-100 {
+        min-height: 100vh;
+    }
+    
+    /* Reduz ainda mais o padding em telas pequenas */
+    .col-12.col-lg-5 .row {
+        padding: 1.5rem 0.75rem !important;
+    }
+    
+    /* Título menor em telas muito pequenas */
+    .logo-titulo {
+        font-size: 2rem;
+    }
+    
+    /* Imagem ainda menor */
+    .responsive-mockup {
+        max-width: 220px;
+        max-height: 160px;
+    }
+    
+    /* Seção verde mais compacta */
+    .col-12.col-lg-7.bg-success {
+        min-height: 200px;
+        max-height: 35vh;
+    }
+    
+    /* Formulário mais compacto */
+    .form-group {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Botão com altura adequada para touch */
+    .btn {
+        min-height: 48px;
+        padding: 12px 16px;
+    }
+}
+
+/* Ajustes para landscape em mobile */
+@media (max-width: 767.98px) and (orientation: landscape) {
+    /* Em landscape, reduz a altura da seção verde */
+    .col-12.col-lg-7.bg-success {
+        min-height: 150px;
+        max-height: 30vh;
+    }
+    
+    /* Mockup ainda menor em landscape */
+    .responsive-mockup {
+        max-width: 200px;
+        max-height: 120px;
+    }
+    
+    /* Container com scroll se necessário */
+    .vh-100 {
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+/* Ajustes para desktop large (1200px+) */
+@media (min-width: 1200px) {
+    /* Limita o tamanho do formulário em telas grandes */
+    .col-12.col-sm-10.col-md-8.col-lg-10 {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    /* Título responsivo para desktop */
+    .logo-titulo {
+        font-size: 3.5rem;
+    }
+    
+    /* Mockup com tamanho otimizado para desktop */
+    .responsive-mockup {
+        max-width: 520px;
+    }
+}
+
 /* Tamanho mínimo de 44px para inputs do Bootstrap */
 .form-control {
     min-height: 48px;
@@ -221,6 +372,44 @@ hr{
 /* ==============================================
    ESTILOS CLEAN PARA NOVA CONTA COM ETAPAS
    ============================================== */
+
+/* Header da página Nova Conta - FLAT DESIGN */
+.nova-conta-header {
+    background-color: #67AF43;
+    padding: 2rem 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.nova-conta-header .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+/* Botão do header com altura padrão mantida */
+.nova-conta-header .btn {
+    min-height: 48px;
+    padding: 12px 24px;
+    font-weight: 500;
+    border-width: 2px;
+    font-size: 0.95rem;
+}
 
 /* Layout clean da página nova conta */
 .nova-conta-clean {
@@ -526,6 +715,18 @@ hr{
         padding: 1rem;
     }
     
+    .header-title {
+        font-size: 2rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1rem;
+    }
+    
+    .nova-conta-header {
+        padding: 1.5rem 0;
+    }
+    
     .progress-steps-external {
         padding: 0 1rem;
     }
@@ -586,6 +787,10 @@ hr{
 
 @media (max-width: 576px) {
     .plan-price-clean .price-amount {
+        font-size: 1.75rem;
+    }
+    
+    .header-title {
         font-size: 1.75rem;
     }
     
@@ -656,7 +861,7 @@ hr{
     left: 50%;
     width: 0;
     height: 0;
-    background: linear-gradient(135deg, #67AF43, #b5e48c);
+    background-color: #67AF43;
     border-radius: 50%;
     /* Transição mais lenta */
     -webkit-transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -709,7 +914,7 @@ hr{
 
 /* Botão ativo/selecionado - VERDE SÓLIDO */
 .btn-round.active {
-    background: linear-gradient(135deg, #67AF43, #5a9b3a);
+    background-color: #67AF43;
     border-color: #67AF43;
     color: #ffffff;
     box-shadow: 0 4px 15px rgba(103, 175, 67, 0.4);
@@ -721,7 +926,7 @@ hr{
 }
 
 .btn-round.active:hover {
-    background: linear-gradient(135deg, #5a9b3a, #4d8732);
+    background-color: #5a9b3a;
     -webkit-transform: translateY(-2px);
             transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(103, 175, 67, 0.4);
@@ -739,7 +944,7 @@ hr{
     right: -4px;
     width: 16px; /* Reduzido de 18px para 16px */
     height: 16px; /* Reduzido de 18px para 16px */
-    background: linear-gradient(135deg, #dc3545, #c82333);
+    background-color: #dc3545;
     border: 2px solid #ffffff;
     border-radius: 50%;
     display: flex;
@@ -867,7 +1072,7 @@ hr{
     right: 6px;
     width: 8px;
     height: 8px;
-    background: linear-gradient(135deg, #67AF43, #5a9b3a);
+    background-color: #67AF43;
     border: 2px solid #ffffff;
     border-radius: 50%;
     animation: notification-pulse 2s infinite;

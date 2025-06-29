@@ -6,18 +6,21 @@
 <dmx-value id="selected_plan" dmx-bind:value="'profissional'"></dmx-value>
 <dmx-browser id="navegacao"></dmx-browser>
 
+<!-- Header da página -->
+<header class="nova-conta-header">
+    <div class="container">
+        <h1 class="header-title">Criar Nova Conta</h1>
+        <p class="header-subtitle">Preencha os dados abaixo para começar a usar o ZappyPay</p>
+        <button id="btn_voltar_home" class="btn btn-outline-light btn-sm" dmx-on:click="navegacao.goto('/', true)">
+            <i class="fas fa-arrow-left me-2"></i>Voltar ao Login
+        </button>
+    </div>
+</header>
+
 <div class="nova-conta-clean">
     <div class="container py-3">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <!-- Header simples -->
-                <div class="text-center mb-4">
-                    <h1 class="h2 text-dark fw-bold mb-2">Criar Nova Conta</h1>
-                    <p class="text-muted">Preencha os dados abaixo para começar a usar o ZappyPay</p>
-                    <button id="btn_voltar_home" class="btn btn-outline-secondary btn-sm" dmx-on:click="navegacao.goto('/', true)">
-                        <i class="fas fa-arrow-left me-2"></i>Voltar ao Login
-                    </button>
-                </div>
 
                 <!-- Progress indicator fora do card -->
                 <div class="progress-steps-external mb-4">
