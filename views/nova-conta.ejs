@@ -1,7 +1,7 @@
 <!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="novaconta" appConnect="local" components="{dmxValidator:{}}" -->
 
 <!-- Variáveis de controle do formulário -->
-<dmx-value id="current_step" dmx-bind:value="1"></dmx-value>
+<dmx-value id="current_step" dmx-bind:value="4"></dmx-value>
 <dmx-value id="total_steps" dmx-bind:value="4"></dmx-value>
 <dmx-value id="selected_plan" dmx-bind:value="'profissional'"></dmx-value>
 <dmx-browser id="navegacao"></dmx-browser>
@@ -174,88 +174,10 @@
 
                                 <div class="row g-3">
                                     <!-- Plano Básico -->
-                                    <div class="col-lg-4">
-                                        <div class="plan-card-clean" dmx-class:selected="selected_plan.value == 'basico'" dmx-on:click="selected_plan.setValue('basico')">
-                                            <input type="radio" name="plano" value="basico" class="plan-radio" dmx-bind:checked="selected_plan.value == 'basico'">
-
-                                            <div class="plan-header-clean">
-                                                <h5 class="plan-name-clean">Básico</h5>
-                                                <div class="plan-price-clean">
-                                                    <span class="price-amount">R$ 29</span>
-                                                    <span class="price-period">/mês</span>
-                                                </div>
-                                            </div>
-
-                                            <ul class="plan-features-clean">
-                                                <li><i class="fas fa-check text-success me-2"></i>Até 100 transações/mês</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Dashboard básico</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Suporte por email</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>PIX e cartão</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Relatórios mensais</li>
-                                            </ul>
-
-                                            <div class="plan-check-clean">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <!-- Plano Profissional -->
-                                    <div class="col-lg-4">
-                                        <div class="plan-card-clean featured-plan" dmx-class:selected="selected_plan.value == 'profissional'" dmx-on:click="selected_plan.setValue('profissional')">
-                                            <div class="plan-badge-clean">Recomendado</div>
-                                            <input type="radio" name="plano" value="profissional" class="plan-radio" dmx-bind:checked="selected_plan.value == 'profissional'">
-
-                                            <div class="plan-header-clean">
-                                                <h5 class="plan-name-clean">Profissional</h5>
-                                                <div class="plan-price-clean">
-                                                    <span class="price-amount">R$ 79</span>
-                                                    <span class="price-period">/mês</span>
-                                                </div>
-                                            </div>
-
-                                            <ul class="plan-features-clean">
-                                                <li><i class="fas fa-check text-success me-2"></i>Até 1.000 transações/mês</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Dashboard avançado</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Suporte prioritário</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Todos os meios de pagamento</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Relatórios personalizados</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>API completa</li>
-                                            </ul>
-
-                                            <div class="plan-check-clean">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <!-- Plano Enterprise -->
-                                    <div class="col-lg-4">
-                                        <div class="plan-card-clean" dmx-class:selected="selected_plan.value == 'enterprise'" dmx-on:click="selected_plan.setValue('enterprise')">
-                                            <input type="radio" name="plano" value="enterprise" class="plan-radio" dmx-bind:checked="selected_plan.value == 'enterprise'">
-
-                                            <div class="plan-header-clean">
-                                                <h5 class="plan-name-clean">Enterprise</h5>
-                                                <div class="plan-price-clean">
-                                                    <span class="price-amount">R$ 199</span>
-                                                    <span class="price-period">/mês</span>
-                                                </div>
-                                            </div>
-
-                                            <ul class="plan-features-clean">
-                                                <li><i class="fas fa-check text-success me-2"></i>Transações ilimitadas</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Dashboard executivo</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Suporte 24/7</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Integração customizada</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>Gerente de conta dedicado</li>
-                                                <li><i class="fas fa-check text-success me-2"></i>SLA garantido</li>
-                                            </ul>
-
-                                            <div class="plan-check-clean">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 

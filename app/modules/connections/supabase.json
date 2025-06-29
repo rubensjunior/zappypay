@@ -1,5 +1,5 @@
 {
-  "name": "supabase",
+  "name": "orderpay",
   "module": "dbconnector",
   "action": "connect",
   "options": {
@@ -10,8 +10,7 @@
       "user": "postgres.yevresbdagbaxudaxavo",
       "password": "@Baki025@",
       "database": "postgres"
-    },
-    "tz": "utc"
+    }
   },
   "fileName": "supabase.json"
 }
